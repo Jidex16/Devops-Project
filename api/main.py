@@ -29,7 +29,7 @@ s3 = boto3.client(
     aws_access_key_id= os.getenv("AWS_ACCESS_KEY"),
     aws_secret_access_key= os.getenv("AWS_SECRET_KEY"))
 
-bucket_name = 'YOUR_BUCKET_NAME' # Add your bucket name here
+bucket_name = 'final-qr-bucket' # Add your bucket name here
 
 @app.post("/generate-qr/")
 async def generate_qr(url: str):
@@ -62,4 +62,4 @@ async def generate_qr(url: str):
         return {"qr_code_url": s3_url}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    
+   
